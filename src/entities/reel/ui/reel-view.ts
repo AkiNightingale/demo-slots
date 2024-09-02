@@ -6,7 +6,7 @@ import apple from '@/shared/assets/images/apple.svg';
 import diamond from '@/shared/assets/images/diamond.svg';
 import strawberry from '@/shared/assets/images/strawberry.svg';
 import grape from '@/shared/assets/images/grape.svg';
-import {GRID_HEIGHT, GRID_WIDTH, REEL_WIDTH, SYMBOL_SIZE} from "@/shared/services/global-constants";
+import {GRID_HEIGHT, GRID_WIDTH, COLUMN_WIDTH, SYMBOL_SIZE} from "@/shared/services/global-constants";
 
 export const createReels = async (app: Application): Promise<IReel[]> => {
     await Assets.load([
@@ -36,7 +36,7 @@ export const createReels = async (app: Application): Promise<IReel[]> => {
 
     app.stage.addChild(reelContainer);
 
-    reelContainer.x = (app.screen.width - REEL_WIDTH * GRID_WIDTH) / 2;
+    reelContainer.x = (app.screen.width - COLUMN_WIDTH * GRID_WIDTH) / 2;
     reelContainer.y = (app.screen.height - SYMBOL_SIZE * GRID_HEIGHT) / 2;
 
     return reels;

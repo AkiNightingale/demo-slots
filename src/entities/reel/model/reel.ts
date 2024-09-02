@@ -1,10 +1,10 @@
 import { Container, Sprite, Texture, BlurFilter } from 'pixi.js';
-import { GRID_HEIGHT, REEL_WIDTH, SYMBOL_SIZE } from '@/shared/services/global-constants';
+import { GRID_HEIGHT, COLUMN_WIDTH, SYMBOL_SIZE } from '@/shared/services/global-constants';
 import { IReel } from '@/shared/services/global-types';
 
 export const createReel = (slotTextures: Texture[], reelIndex: number): IReel => {
   const container = new Container();
-  container.x = reelIndex * REEL_WIDTH;
+  container.x = reelIndex * COLUMN_WIDTH;
 
   const blur = new BlurFilter();
   blur.strengthX = 0;
