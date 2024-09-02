@@ -1,20 +1,24 @@
 import { defineConfig } from 'vite';
 
-export default defineConfig({
-    root: 'src',
+export default defineConfig(({ command }) => (
+  {
+    base: command === 'serve' ? '/' : '/demo-slots/',
+    root: '.',
     resolve: {
-        alias: {
-            '@': '',
-        },
+      alias: {
+        '@': '/src',
+      },
     },
     build: {
-        outDir: '../build',
-        emptyOutDir: true,
+      outDir: 'build',
+      emptyOutDir: true,
     },
     server: {
-        open: true,
+      open: true,
     },
+    publicDir: 'public',
     optimizeDeps: {
-        include: ['pixi.js'],
+      include: ['pixi.js'],
     },
-});
+  }
+));

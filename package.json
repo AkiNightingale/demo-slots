@@ -2,6 +2,7 @@
   "name": "slots-game-demo",
   "version": "1.0.0",
   "packageManager": "yarn@4.3.1",
+  "homepage": "https://akinightingale.github.io/demo-slots/",
   "main": "index.ts",
   "scripts": {
     "start": "vite",
