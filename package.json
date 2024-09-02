@@ -8,7 +8,7 @@
     "build": "vite build",
     "serve": "vite preview",
     "deploy": "gh-pages -d build",
-    "predeploy": "vite build"
+    "predeploy": "yarn build"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^4.3.1",

@@ -2,6 +2,8 @@
 
 This project was created to showcase skills in working with PIXI.js and canvases in general
 
+Please note that there is currently no full responsiveness, so it may not look great on small screens
+
 ## How to run
 
 In the project directory, you can run:
