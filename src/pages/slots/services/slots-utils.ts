@@ -8,18 +8,18 @@ const generateGradientTexture = (width: number, height: number): HTMLCanvasEleme
   const canvas = document.createElement('canvas');
   canvas.width = width;
   canvas.height = height;
-  const ctx = canvas.getContext('2d');
+  const context = canvas.getContext('2d');
 
-  if (!ctx) {
-    throw new Error('Unable to get 2D context');
+  if (!context) {
+    throw new Error('Unable to get context');
   }
 
-  const gradient = ctx.createLinearGradient(0, 0, 0, height);
+  const gradient = context.createLinearGradient(0, 0, 0, height);
   gradient.addColorStop(0, '#013220');
   gradient.addColorStop(1, '#3d985f');
 
-  ctx.fillStyle = gradient;
-  ctx.fillRect(0, 0, width, height);
+  context.fillStyle = gradient;
+  context.fillRect(0, 0, width, height);
 
   return canvas;
 };

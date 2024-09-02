@@ -5,6 +5,10 @@ import grape from '@/shared/assets/images/grape.svg';
 import strawberry from '@/shared/assets/images/strawberry.svg';
 import { IReel } from '@/shared/services/global-types';
 
+
+/** This function creates and manages transitions (tweening) of object properties over time
+ * The function records the start time, stores the initial value of the property,
+ * and pushes the configuration into the tweening array */
 const tweenTo = (
   tweening: any[],
   object: any,
@@ -31,45 +35,46 @@ const tweenTo = (
   return tween;
 };
 
+/** This function creates a custom easing effect that starts fast and then backs out slowly,
+ * useful for creating spring-like dynamics.
+ * The amount parameter adjusts the strength of the backing out */
 const backout = (amount: number) => {
   return (t: number) => --t * t * ((amount + 1) * t + amount) + 1;
 };
 
-const reelsComplete = (isRunning: boolean) => {
-  isRunning = false;
-};
-
-export const startPlay = (isRunning: boolean, reels: IReel[], tweening: any[]) => {
-  if (isRunning) {
-    return;
-  } else {
-    isRunning = true;
-  }
-
-  for (let i = 0; i < reels.length; i++) {
-    const r = reels[i];
+export const startPlay = (isRunning: boolean, reels: IReel[], tweening: any[], spinButton: HTMLButtonElement) => {
+  /** It iterates through each reel and applies a random additional spin to make the outcome less predictable */
+  reels.forEach((reel, i) => {
     const extra = Math.floor(Math.random() * 3);
-    const target = r.position + 10 + i * 5 + extra;
+    const target = reel.position + 10 + i * 5 + extra;
     const time = 2500 + i * 600 + extra * 600;
 
     tweenTo(
       tweening,
-      r,
+      reel,
       'position',
       target,
       time,
       backout(0.5),
       null,
-      i === reels.length - 1 ? reelsComplete(isRunning) : null,
+      i === reels.length - 1 ? () => {
+        isRunning = false;
+        spinButton.classList.remove('spinning');
+        spinButton.textContent = 'Spin';
+      } : null,
     );
-  }
+  });
 };
 
+/** Returns a random symbol from the list of imported images */
 export const getRandomSymbol = (): string => {
   const symbols = [banana, apple, diamond, strawberry, grape];
   return symbols[Math.floor(Math.random() * symbols.length)];
 };
 
-export const lerp = (a1: number, a2: number, t: number): number => {
-  return a1 * (1 - t) + a2 * t;
+/** Calculates the intermediate value between two numbers */
+export const linearInterpolation = (a1: number, a2: number, t: number): number => {
+  return a1 * (
+    1 - t
+  ) + a2 * t;
 };

@@ -1,14 +1,18 @@
-export const SpinButton = (onClick: () => void): HTMLButtonElement => {
-    const button = document.createElement('button');
-    button.innerText = 'Spin';
-    button.style.padding = '10px 20px';
-    button.style.fontSize = '18px';
-    button.style.cursor = 'pointer';
-    button.style.marginTop = '20px';
+import './button.scss';
+import { startSpin } from '@/features/spin-reels/model/spin';
+import { IReel } from '@/shared/services/global-types';
+import { Application } from 'pixi.js';
 
-    button.addEventListener('click', () => {
-        onClick();
-    });
+export const SpinButton = (app: Application, reels: IReel[]): HTMLDivElement => {
+  const container = document.createElement('div');
+  container.className = 'spin-btn__container';
 
-    return button;
+  const button = document.createElement('button');
+  button.className = 'spin-btn__container_button';
+  button.innerText = 'Spin';
+  container.appendChild(button);
+
+  button.addEventListener('click', () => startSpin(app, reels, button));
+
+  return container;
 };
