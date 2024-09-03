@@ -6,11 +6,9 @@
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    width: 16%;
+    width: 13rem;
     height: 15%;
-    max-width: 16rem;
     max-height: 12rem;
-    min-width: 12rem;
     min-height: 10rem;
 
     &_button {
@@ -34,7 +32,6 @@
         justify-content: flex-start;
         pointer-events: none;
         width: 100%;
-        padding: 0 2rem;
       }
 
       &:hover {
