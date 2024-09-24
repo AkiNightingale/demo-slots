@@ -4,6 +4,11 @@ This project was created to showcase skills in working with PIXI.js and canvases
 
 Please note that there is currently no full responsiveness, so it may not look great on small screens
 
+# Deployed on GitHub Pages
+
+Follow the link to view it:
+[https://akinightingale.github.io/test-layout/](https://akinightingale.github.io/demo-slots/)
+
 ## How to run
 
 In the project directory, you can run:
